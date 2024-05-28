@@ -1,22 +1,10 @@
 {
     "version": 2,
-    "name": "vrs-chatty-app",
+    "name": "chat-app",
     "builds": [
-      {
-        "src": "server.js",
-        "use": "@vercel/node"
-      }
+       { "src": "app.js", "use": "@vercel/node" }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/server.js"
-      }
-    ],
-    "env": {
-      "NODE_ENV": "production",
-      "PORT": "4040"
-      // Add any other environment variables your app needs
-    }
-  }
-  
+       { "src": "/(.*)", "dest": "/server.js" }
+    ]
+ }
