@@ -5,7 +5,7 @@ let socketUsers = {};
 function setupSocket(server) {
     const io = new Server(server, {
         cors: {
-            origin: 'https://6655b00a3d20321c399c72b3--stupendous-liger-acdbd8.netlify.app/',
+            origin: process.env.CORS_ORIGIN,
             methods: ['GET', 'POST'],
             allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
         },

@@ -19,7 +19,7 @@ const server = http.createServer(app); // Create an HTTP server
 connectDB();
 
 app.use(cors({
-  origin: 'https://6655b00a3d20321c399c72b3--stupendous-liger-acdbd8.netlify.app/',
+  origin: process.env.CORS_ORIGIN,
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
 }));
