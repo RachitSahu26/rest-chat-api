@@ -5,7 +5,7 @@ let socketUsers = {};
 function setupSocket(server) {
     const io = new Server(server, {
         cors: {
-            origin: "https://vrs-chatty.netlify.app/",
+            origin: "https://vrs-chatty-app.netlify.app/",
             methods: ['GET', 'POST'],
             allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
         },
