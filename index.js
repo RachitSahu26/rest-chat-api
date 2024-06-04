@@ -19,7 +19,7 @@ const server = http.createServer(app); // Create an HTTP server
 connectDB();
 
 app.use(cors({
-  origin:"https://vrs-chatty-app.netlify.app/",
+  origin: `${process.env.CORS_ORIGIN}`,
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
 }));

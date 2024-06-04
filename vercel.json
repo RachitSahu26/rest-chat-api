@@ -1,32 +1,16 @@
 {
-   "version": 2,
-   "builds": [
-     {
-       "src": "api/index.js",
-       "use": "@vercel/node"
-     }
-   ],
-   "routes": [
-     {
-       "src": "/(.*)",
-       "dest": "/api/index.js"
-     }
-   ],
-   "env": {
-     "PORT": "4040",
-     "DB_CONNECTION_STRING": "@db_connection_string",
-     "NODE_ENV": "production",
-     "ANOTHER_ENV_VAR": "value"
-   },
-   "build": {
-     "env": {
-       "PORT": "4040",
-       "DB_CONNECTION_STRING": "@db_connection_string",
-       "NODE_ENV": "production",
-       "ANOTHER_ENV_VAR": "value"
-     }
-   },
-   "public": "public",
-   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./api"
- }
- 
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/server.js"
+      }
+    ]
+  }
+  
