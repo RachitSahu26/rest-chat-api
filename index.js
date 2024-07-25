@@ -18,15 +18,20 @@ const server = http.createServer(app); // Create an HTTP server
 
 connectDB();
 
+
+
+
 app.use(cors({
-  origin: `${process.env.CORS_ORIGIN}`,
+  origin: process.env.CORS_ORIGIN,
+   // Make sure this URL matches exactly
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
 }));
+
 app.use(cookieParser());
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("API is running");
+  res.send(" Rachit Sahu API is running");
 });
 
 // Routes
