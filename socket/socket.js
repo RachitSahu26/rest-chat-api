@@ -5,7 +5,7 @@ let socketUsers = {};
 function setupSocket(server) {
     const io = new Server(server, {
         cors: {
-            origin: process.env.CORS_ORIGIN,
+            origin:"http://localhost:3000",
   
 
             methods: ['GET', 'POST'],

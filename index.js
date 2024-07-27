@@ -1,7 +1,8 @@
 const express = require("express");
 const http = require("http");
 const dotenv = require("dotenv");
-const cors = require('cors');
+const path = require("path");
+// const cors = require('cors');
 const connectDB = require("./config/db");
 const colors = require("colors");
 const cookieParser = require('cookie-parser');
@@ -16,22 +17,21 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app); // Create an HTTP server
 
-connectDB();
 
 
-
-
-app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-   // Make sure this URL matches exactly
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
-}));
+// app.use(cors({
+//   origin:"http://localhost:3000",
+//   credentials: true,
+//   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
+// }));
 
 app.use(cookieParser());
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send(" Rachit Sahu API is running");
+
+// Serve static files from the frontend build directory
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
 // Routes
@@ -43,6 +43,11 @@ app.use("/api/message", messageRoute);
 const { io } = setupSocket(server);
 initializeSocket(io); // Initialize the socket in the message controller
 
-const PORT = process.env.PORT || 4040;
+const PORT = process.env.PORT || 5000;
 
-server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+server.listen(PORT, () =>{
+  connectDB();
+   console.log(`Server is running on port ${PORT}`)
+}
+
+);
